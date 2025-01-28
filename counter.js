@@ -1,7 +1,6 @@
-
 (() => {
   // カウンターの値を表示する要素を取得
-  const $counter = document.getElementById("js-counter");// 「webページの要素をIDを使って探して、その箱（定数）に入れる」
+  const $counter = document.getElementById("js-counter"); // 「webページの要素をIDを使って探して、その箱（定数）に入れる」
 
   // ボタンがクリックされた時の処理を定義
   const clickHandler = (e) => {
@@ -9,10 +8,29 @@
     let currentCount = parseInt($counter.textContent);
 
     // プラスボタンがクリックされた場合は加算、マイナスボタンの場合は減算
-    if ($targetButton.textContent === "+") {//=== は 「厳密(げんみつ)なイコール」 と呼ばれています。
+    if ($targetButton.textContent === "+") {
+      //=== は 「厳密(げんみつ)なイコール」 と呼ばれています。
       $counter.textContent = currentCount + 1;
+
+      // カウントが10または20になったらアラートを表示
+      if (currentCount + 1 === 10) {
+        alert("カウントが10になりました🎉");
+      } else if (currentCount + 1 === 20) {
+        alert("カウントが20になりました🎉");
+      } else if (currentCount + 1 === 30) {
+        alert("カウントが30になりました🎉");
+      }
+
+      // カウントが40の時は背景色を変更
+      if (currentCount + 1 === 40) {
+        document.body.style.backgroundColor = "#ffebcd";// ベージュ色に変更
+      }
     } else {
       $counter.textContent = currentCount - 1;
+      // 40から減らした時は背景色を元に戻す
+      if (currentCount === 40) {
+        document.body.style.backgroundColor = "";
+      }
     }
   };
 
